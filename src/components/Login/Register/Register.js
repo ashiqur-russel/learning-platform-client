@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -9,10 +9,13 @@ import { BsGoogle, BsGithub } from "react-icons/bs";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const { providerLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { providerLogin, createUser, updateUserProfile, signOut } =
+    useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
 
+  //Form Data submit for Registration
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -22,8 +25,24 @@ const Register = () => {
     const password = form.password.value;
 
     console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError("");
+        form.reset();
+        handleUpdateUserProfile(name, photoURL);
+
+        signOut();
+      })
+      .catch((e) => {
+        console.error(e);
+        setError(e.message);
+      });
   };
 
+  //Google Sign In Method
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -33,6 +52,21 @@ const Register = () => {
 
         console.log(user);
       })
+      .catch((error) => console.error(error));
+  };
+
+  //function for update user profile
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+
+    console.log(photoURL);
+
+    updateUserProfile(profile)
+      .then(() => {})
       .catch((error) => console.error(error));
   };
 
@@ -71,6 +105,7 @@ const Register = () => {
               name="login"
               placeholder="password"
             />
+            <span>{error}</span>
             <input type="submit" className="fadeIn fourth" value="Log In" />
 
             <div className="text-center">

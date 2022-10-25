@@ -9,10 +9,11 @@ body {
 }
 .dark {
   background: #110f16;
+  min-height: 70vh;
 }
 .light {
   background: #f3f5f7;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 a,
 a:hover {
