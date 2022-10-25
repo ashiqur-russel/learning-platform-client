@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from "react";
 import CourseCard from "../CourseCard/CourseCard";
 import { useLoaderData } from "react-router-dom";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";

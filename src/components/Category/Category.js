@@ -1,7 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import CourseCard from "../CourseCard/CourseCard";
-import CourseDetails from "../CourseDetails/CourseDetails";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 
 const Category = () => {
