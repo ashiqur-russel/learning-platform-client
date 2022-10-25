@@ -8,7 +8,13 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Nav = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
   return (
     <>
       <nav className="main-nav">
@@ -39,10 +45,18 @@ const Nav = () => {
             <li>
               <Link to="/blog">blog</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>{user}</li>
+            {user?.uid ? (
+              <li>
+                <Link onClick={handleLogout}>Logout</Link>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>{user?.displayName}</li>{" "}
+              </>
+            )}
           </ul>
         </div>
 
@@ -50,12 +64,21 @@ const Nav = () => {
         <div className="social-media">
           <ul className="social-media-desktop">
             <li>
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                className="rounded-circle"
-                style={{ width: "50px" }}
-                alt="Avatar"
-              />
+              {user?.photoURL ? (
+                <img
+                  src={user?.photoURL}
+                  className="rounded-circle"
+                  style={{ width: "50px" }}
+                  alt="Avatar"
+                />
+              ) : (
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                  className="rounded-circle"
+                  style={{ width: "50px" }}
+                  alt="Avatar"
+                />
+              )}
             </li>
           </ul>
 
