@@ -52,7 +52,7 @@ const Nav = () => {
             <li>
               <img
                 src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                class="rounded-circle"
+                className="rounded-circle"
                 style={{ width: "50px" }}
                 alt="Avatar"
               />

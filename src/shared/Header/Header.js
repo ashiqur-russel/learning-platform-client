@@ -3,46 +3,46 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 const Header = () => {
   return (
-    <div class="container-fluid banner">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="navbar navbar-md">
-            <div class="navbar-brand">SPITAL</div>
-            <ul class="nav">
-              <li class="nav-item">
-                <Link class="nav-link" href="#">
+    <div className="container-fluid banner">
+      <div className="row">
+        <div className="col-md-12">
+          <nav className="navbar navbar-md">
+            <div className="navbar-brand">SPITAL</div>
+            <ul className="nav">
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
                   HOME
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="#">
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
                   COURSES
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="#">
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
                   FAQ
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="#">
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
                   BLOG
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="#">
+              <li className="nav-item">
+                <Link className="nav-link" href="#">
                   LOGIN
                 </Link>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="col-md-8 offset-md-2 info">
-          <h1 class="text-center">SPITAL</h1>
-          <p class="text-center">
+        <div className="col-md-8 offset-md-2 info">
+          <h1 className="text-center">SPITAL</h1>
+          <p className="text-center">
             Lorem ipsum dolor sit amet, consectetur adipisicing
           </p>
-          <Link href="#" class="btn btn-md text-center">
+          <Link href="#" className="btn btn-md text-center">
             GET STARTED
           </Link>
         </div>
