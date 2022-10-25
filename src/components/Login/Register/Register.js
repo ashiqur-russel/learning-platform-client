@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { BsGoogle, BsGithub } from "react-icons/bs";
-import { toast } from "react-toastify";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { providerLogin, createUser, updateUserProfile, signOut } =
+  const { createUser, updateUserProfile, verifyEmail, providerLogin } =
     useContext(AuthContext);
+
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
 
@@ -33,8 +34,7 @@ const Register = () => {
         setError("");
         form.reset();
         handleUpdateUserProfile(name, photoURL);
-
-        signOut();
+        handleEmailVerification();
       })
       .catch((e) => {
         console.error(e);
@@ -63,9 +63,13 @@ const Register = () => {
       photoURL: photoURL,
     };
 
-    console.log(photoURL);
-
     updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
+  const handleEmailVerification = () => {
+    verifyEmail()
       .then(() => {})
       .catch((error) => console.error(error));
   };

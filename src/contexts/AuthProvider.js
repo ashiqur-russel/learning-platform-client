@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -35,6 +36,12 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  //verify email
+
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
   //update user profile from firebase
   const updateUserProfile = (profile) => {
     return updateUserProfile(auth.currentUser, profile);
@@ -52,9 +59,8 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("inside auth state change", currentUser);
 
-      if (currentUser === null) {
+      if (currentUser === null || currentUser.emailVerified) {
         setUser(currentUser);
-        console.log(user);
       }
       setLoading(false);
     });
@@ -71,6 +77,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     signIn,
+    verifyEmail,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
