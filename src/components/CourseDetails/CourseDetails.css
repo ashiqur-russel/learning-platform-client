@@ -78,11 +78,25 @@ a:hover {
   background-color: #424242;
   transition: width 0.2s ease;
 }
+
 .postcard .postcard__text {
   padding: 1.5rem;
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+time {
+  margin-left: 20px;
+}
+.postcard__text > h1 {
+  margin-left: 20px;
+}
+.postcard__subtitle small {
+  margin-left: 20px;
+}
+.postcard__preview-txt {
+  margin-left: 20px;
 }
 .postcard .postcard__preview-txt {
   overflow: hidden;
@@ -122,7 +136,9 @@ a:hover {
   opacity: 1;
   border-radius: 10px;
 }
+
 .postcard:hover .postcard__bar {
+  margin-left: 20px;
   width: 100px;
 }
 @media screen and (min-width: 769px) {

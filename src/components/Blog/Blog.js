@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./Blog.css";
+
 const Blog = () => {
   return (
     <div>
