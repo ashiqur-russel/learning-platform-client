@@ -234,6 +234,6 @@ a:hover {
 /*
 * Footer
 */
-.footer .border-highlight {
+.border-highlight {
   border-top: 1px solid var(--primary-color-highlight);
 }
