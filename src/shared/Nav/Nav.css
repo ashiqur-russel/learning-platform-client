@@ -78,9 +78,9 @@ li {
   -webkit-text-fill-color: transparent;
 }
 
-.logo h2 span {
+/* .logo h2 span {
   font-size: 3.5rem;
-}
+} */
 
 .menu-link ul li {
   font-size: 16px;
@@ -177,7 +177,7 @@ body.dark .menu-link ul li a {
 
   .logo,
   .social-media ul {
-    height: 7rem;
+    height: 3rem;
   }
 
   .mobile-menu-link {
@@ -245,6 +245,11 @@ body.dark .menu-link ul li a {
 
   .logo,
   .social-media ul {
+    height: 3rem;
+  }
+
+  .logo,
+  .social-media ul {
     height: 6rem;
   }
 
@@ -269,11 +274,12 @@ body.dark .menu-link ul li a {
 
   .logo,
   .social-media ul {
-    height: 6rem;
+    height: 3rem;
   }
 
-  .logo h2 {
-    font-size: 2rem;
+  .logo,
+  .social-media ul {
+    height: 6rem;
   }
 
   .social-media {
