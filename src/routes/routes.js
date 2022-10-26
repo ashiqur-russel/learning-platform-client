@@ -10,6 +10,7 @@ import Cart from "../components/Cart/Cart";
 import Faqs from "../components/Faqs/Faqs";
 import Main from "../Layout/Main";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import Error from "../components/Error/Error";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,12 +65,16 @@ const router = createBrowserRouter([
           return fetch(`https://e-learn-server.vercel.app/course/${params.id}`);
         },
         element: (
-          <>
+          <PrivateRoutes>
             <Cart></Cart>
-          </>
+          </PrivateRoutes>
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
   },
 ]);
 export default router;
