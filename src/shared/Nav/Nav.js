@@ -2,17 +2,20 @@ import React, { useState, useContext } from "react";
 import "./Nav.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Nav = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
 
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate("/login");
+      })
       .catch((err) => console.error(err));
   };
   return (
@@ -46,15 +49,15 @@ const Nav = () => {
             </li>
             {user && user?.uid ? (
               <>
-                <li>
-                  <Link onClick={handleLogout}>Logout</Link>
+                <span>{user && user?.emailVerified}</span>
+                <li variant="light" onClick={handleLogOut}>
+                  Log out
                 </li>
-                <li>Welcome, {user?.displayName}</li>{" "}
               </>
             ) : (
-              <li>
+              <>
                 <Link to="/login">Login</Link>
-              </li>
+              </>
             )}
           </ul>
         </div>

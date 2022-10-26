@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -30,6 +31,13 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  //Signin Functinality
+
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   //logout function
   const logOut = () => {
     setLoading(true);
@@ -38,20 +46,13 @@ const AuthProvider = ({ children }) => {
 
   //verify email
 
-  const verifyEmail = () => {
+  const verifyUserEmail = () => {
     return sendEmailVerification(auth.currentUser);
   };
 
   //update user profile from firebase
   const updateUserProfile = (profile) => {
-    return updateUserProfile(auth.currentUser, profile);
-  };
-
-  //Signin Functinality
-
-  const signIn = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return updateProfile(auth.currentUser, profile);
   };
 
   //Observer for user tracking
@@ -68,7 +69,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, [user]);
+  }, []);
 
   const authInfo = {
     user,
@@ -77,7 +78,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     signIn,
-    verifyEmail,
+    verifyUserEmail,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

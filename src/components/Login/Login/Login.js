@@ -1,17 +1,23 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import { toast } from "react-toastify";
+
 import "./Login.css";
 const Login = () => {
   const [error, setError] = useState("");
   const { signIn, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email, password);
+
     signIn(email, password)
       .then((result) => {
         const user = result.user;
@@ -19,19 +25,23 @@ const Login = () => {
         form.reset();
         setError("");
         if (user.emailVerified) {
-          navigate("./course");
+          navigate(from, { replace: true });
+          toast.success("Logged in Successfully!");
         } else {
-          console.log("check email");
+          toast.error(
+            "Your email is not verified. Please verify your email address."
+          );
         }
       })
       .catch((error) => {
-        console.error(error);
         setError(error.message);
+        console.error(error);
       })
       .finally(() => {
         setLoading(false);
       });
   };
+
   return (
     <div>
       <div className="wrapper fadeInDown">
@@ -47,19 +57,17 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <input
               type="email"
-              id="login"
               className="fadeIn second"
               name="email"
               placeholder="Email"
             />
             <input
-              type="text"
-              id="password"
+              type="password"
               className="fadeIn third"
-              name="login"
+              name="password"
               placeholder="password"
             />
-            <span>{error}</span>
+            <span className="text-danger">{error}</span>
             <input type="submit" className="fadeIn fourth" value="Log In" />
           </form>
 

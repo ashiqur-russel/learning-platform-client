@@ -10,7 +10,7 @@ import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile, verifyEmail, providerLogin } =
+  const { createUser, updateUserProfile, verifyUserEmail, providerLogin } =
     useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
@@ -24,7 +24,6 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-
     console.log(name, photoURL, email, password);
 
     createUser(email, password)
@@ -37,8 +36,9 @@ const Register = () => {
         handleEmailVerification();
       })
       .catch((e) => {
+        setError(e);
         console.error(e);
-        setError(e.message);
+        console.log(e.message);
       });
   };
 
@@ -67,11 +67,12 @@ const Register = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
-
   const handleEmailVerification = () => {
-    verifyEmail()
-      .then(() => {})
-      .catch((error) => console.error(error));
+    verifyUserEmail()
+      .then((res) => {
+        toast.warning("Check your email for verification!");
+      })
+      .catch((err) => toast.warning("Something went wrong", err));
   };
 
   return (
@@ -100,6 +101,7 @@ const Register = () => {
               className="fadeIn second"
               name="email"
               placeholder="Email"
+              required
             />
 
             <input
@@ -108,8 +110,9 @@ const Register = () => {
               className="fadeIn third"
               name="login"
               placeholder="password"
+              required
             />
-            <span>{error}</span>
+            <span className="text-danger">{error}</span>
             <input type="submit" className="fadeIn fourth" value="Log In" />
 
             <div className="text-center">

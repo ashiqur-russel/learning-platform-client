@@ -6,7 +6,9 @@ import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
+import Cart from "../components/Cart/Cart";
 import Main from "../Layout/Main";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +32,11 @@ const router = createBrowserRouter([
         loader: () => {
           return fetch("https://e-learn-server.vercel.app/course");
         },
-        element: <Courses></Courses>,
+        element: (
+          <PrivateRoutes>
+            <Courses></Courses>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/course/:id",
@@ -50,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/cart",
+        element: (
+          <PrivateRoutes>
+            <Cart></Cart>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
