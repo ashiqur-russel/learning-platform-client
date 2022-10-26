@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Register.css";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -14,6 +14,8 @@ const Register = () => {
     useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -52,6 +54,20 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         if (user.emailVerified) {
+          navigate(from, { replace: true });
+          toast.success("Logged in Successfully!");
+        }
+      })
+      .catch((error) => setError(error));
+  };
+
+  //Github Sign in
+
+  const handleGithubSignIn = () => {
+    providerLogin(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        if (user.uid) {
           navigate(from, { replace: true });
           toast.success("Logged in Successfully!");
         }
@@ -134,7 +150,11 @@ const Register = () => {
                 <BsGoogle size="30px"></BsGoogle>
               </button>
 
-              <button type="button" className="btn btn-link btn-floating mx-1">
+              <button
+                type="button"
+                className="btn btn-link btn-floating mx-1"
+                onClick={handleGithubSignIn}
+              >
                 <BsGithub size="30px"></BsGithub>
               </button>
             </div>

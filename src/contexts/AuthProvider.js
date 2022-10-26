@@ -57,7 +57,11 @@ const AuthProvider = ({ children }) => {
   //Observer for user tracking
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null || currentUser.emailVerified) {
+      if (
+        currentUser === null ||
+        currentUser.emailVerified ||
+        currentUser.uid
+      ) {
         setUser(currentUser);
       }
       setLoading(false);

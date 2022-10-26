@@ -3,7 +3,6 @@ import "./Nav.css";
 import Logo from "../../assets/logo1.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Toggle from "react-toggle";
-import { AiOutlineDingding } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -117,7 +116,7 @@ const Nav = () => {
         <div className="social-media">
           <ul className="social-media-desktop">
             <li>
-              {user?.photoURL ? (
+              {user?.uid ? (
                 <img
                   src={user?.photoURL}
                   className="rounded-circle"
