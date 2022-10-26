@@ -13,6 +13,7 @@ const Nav = () => {
 
   const navigate = useNavigate();
 
+  //Logout functionality
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -21,8 +22,7 @@ const Nav = () => {
       .catch((err) => console.error(err));
   };
 
-  /* theme */
-
+  /* theme  togogling functionality */
   let clickedClass = "clicked";
   const body = document.body;
   const lightTheme = "light";

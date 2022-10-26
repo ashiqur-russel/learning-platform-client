@@ -96,6 +96,10 @@ li {
   text-decoration: none;
   text-transform: uppercase;
 }
+body.dark p,
+h5 {
+  color: black;
+}
 
 body.dark .menu-link ul li a {
   text-transform: capitalize;
