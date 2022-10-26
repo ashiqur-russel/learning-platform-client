@@ -8,7 +8,7 @@ target="_blank"><img src="https://img.shields.io/badge/Go-1.17+-00ADD8?style=for
 
 ## ⭐️ Project Live Link
 
-## ⚡️ Quick Review of The Project
+## 📝 Project Deatils
 
 - This is learning website where user can see different course base on their interest.
 - On the Navigation there are different Menu Eg:- Blog,Course,FaQ, Toggling dark or Light theme.
@@ -16,9 +16,7 @@ target="_blank"><img src="https://img.shields.io/badge/Go-1.17+-00ADD8?style=for
 - There are private route also in this project.
 - From Course route if user want to redirect to Special Acceess to private route user must have a valid registered email id.
 
-## 📝 Project Deatils
-
-### Technology used
+### ⚡️ Technology used
 
 - [`NodeJs`] & [`Express`] framework used for creating API.
 - [`Firebase`] used for creating user data and Authentication.
