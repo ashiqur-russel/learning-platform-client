@@ -5,8 +5,7 @@ import "./CourseDetails.css";
 const CourseDetails = () => {
   const course = useLoaderData();
 
-  const { details, title, image_url } = course;
-  console.log(course);
+  const { details, title, image_url, _id } = course;
   return (
     <>
       <section className="light">
@@ -23,7 +22,7 @@ const CourseDetails = () => {
             />
             <div className="postcard__text">
               <h1 className="postcard__title yellow">
-                <h2 href="#">{title}</h2>
+                <p href="#">{title}</p>
               </h1>
               <div className="postcard__subtitle small">
                 <time datetime="2020-05-25 12:00:00">
@@ -33,12 +32,15 @@ const CourseDetails = () => {
               <div className="postcard__bar"></div>
               <div className="postcard__preview-txt">{details}</div>
               <ul className="postcard__tagbox">
-                <Link to="/cart">
-                  <button className="btn btn-warning m-2 p-3">
-                    {" "}
-                    GET PREMIUM ACCESS
+                <Link to={`/cart/${_id}`}>
+                  {" "}
+                  <button
+                    className="btn btn-warning w-100"
+                    variant="outline-secondary"
+                  >
+                    Get Premium Access{" "}
                   </button>
-                </Link>
+                </Link>{" "}
               </ul>
             </div>
           </article>

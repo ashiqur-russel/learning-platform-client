@@ -59,11 +59,14 @@ const router = createBrowserRouter([
         element: <Faqs></Faqs>,
       },
       {
-        path: "/cart",
+        path: "/cart/:id",
+        loader: ({ params }) => {
+          return fetch(`https://e-learn-server.vercel.app/course/${params.id}`);
+        },
         element: (
-          <PrivateRoutes>
+          <>
             <Cart></Cart>
-          </PrivateRoutes>
+          </>
         ),
       },
     ],
