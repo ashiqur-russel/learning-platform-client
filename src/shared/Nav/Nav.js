@@ -1,14 +1,16 @@
 import React, { useState, useContext } from "react";
 import "./Nav.css";
+
 import { GiHamburgerMenu } from "react-icons/gi";
+import Toggle from "react-toggle";
 
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Nav = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
-
   const { user, logOut } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -18,8 +20,41 @@ const Nav = () => {
       })
       .catch((err) => console.error(err));
   };
+
+  /* theme */
+
+  let clickedClass = "clicked";
+  const body = document.body;
+  const lightTheme = "light";
+  const darkTheme = "dark";
+  let theme;
+
+  if (localStorage) {
+    theme = localStorage.getItem("theme");
+  }
+
+  if (theme === lightTheme || theme === darkTheme) {
+    body.classList.add(theme);
+  } else {
+    body.classList.add(lightTheme);
+  }
+
+  const switchTheme = (e) => {
+    if (theme === darkTheme) {
+      body.classList.replace(darkTheme, lightTheme);
+      e.target.classList.remove(clickedClass);
+      localStorage.setItem("theme", "light");
+      theme = lightTheme;
+    } else {
+      body.classList.replace(lightTheme, darkTheme);
+      e.target.classList.add(clickedClass);
+      localStorage.setItem("theme", "dark");
+      theme = darkTheme;
+    }
+  };
+
   return (
-    <>
+    <div>
       <nav className="main-nav">
         {/* 1st logo part  */}
         <div className="logo">
@@ -47,6 +82,15 @@ const Nav = () => {
             <li>
               <Link to="/blog">blog</Link>
             </li>
+            <li className="app-container">
+              <Toggle
+                icons={{
+                  checked: "☾",
+                  unchecked: "☽",
+                }}
+                onChange={switchTheme}
+              />
+            </li>
             {user && user?.uid ? (
               <>
                 <span>{user && user?.emailVerified}</span>
@@ -56,7 +100,10 @@ const Nav = () => {
               </>
             ) : (
               <>
-                <Link to="/login">Login</Link>
+                <li>
+                  {" "}
+                  <Link to="/login">Login</Link>
+                </li>
               </>
             )}
           </ul>
@@ -99,7 +146,7 @@ const Nav = () => {
         <p>Welcome to </p>
         <h1>Thapa Technical</h1>
       </section> */}
-    </>
+    </div>
   );
 };
 

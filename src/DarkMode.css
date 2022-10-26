@@ -1,0 +1,16 @@
+#darkMode:hover,
+#darkMode:focus {
+  filter: none;
+  background-color: rgb(46, 45, 45);
+  cursor: pointer;
+  color: white;
+}
+
+#darkMode.clicked {
+  filter: none !important;
+  background-color: rgb(93, 88, 88);
+}
+
+#darkMode .menu-link li a {
+  color: white;
+}

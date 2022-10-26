@@ -33,7 +33,7 @@ const CourseDetails = () => {
               <div className="postcard__bar"></div>
               <div className="postcard__preview-txt">{details}</div>
               <ul className="postcard__tagbox">
-                <Link href="#">
+                <Link to="/cart">
                   <button className="btn btn-warning m-2 p-3">
                     {" "}
                     GET PREMIUM ACCESS
