@@ -67,8 +67,10 @@ const Login = () => {
               name="password"
               placeholder="password"
             />
-            <span className="text-danger">{error}</span>
             <input type="submit" className="fadeIn fourth" value="Log In" />
+            <p>
+              <span className="text-danger">{error}</span>
+            </p>
           </form>
 
           <div id="formFooter">

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,8 @@ const Register = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   //Form Data submit for Registration
   const handleSubmit = (event) => {
@@ -24,8 +26,10 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
-
+    if (password < 6) {
+      setError("Please Enter atleast 6 characetr password");
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -47,8 +51,10 @@ const Register = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        navigate("/");
-        toast.success("Logged in with Google");
+        if (user.emailVerified) {
+          navigate(from, { replace: true });
+          toast.success("Logged in Successfully!");
+        }
 
         console.log(user);
       })
@@ -112,7 +118,6 @@ const Register = () => {
               placeholder="password"
               required
             />
-            <span className="text-danger">{error}</span>
             <input type="submit" className="fadeIn fourth" value="Log In" />
 
             <div className="text-center">
@@ -133,6 +138,9 @@ const Register = () => {
                 <BsGithub size="30px"></BsGithub>
               </button>
             </div>
+            <p>
+              <span className="text-danger">{error}</span>
+            </p>
           </form>
 
           <div id="formFooter">
