@@ -26,9 +26,9 @@ const CourseDetails = () => {
           </Pdf>
         </p>
 
-        <article className="postcard dark yellow" ref={ref}>
+        <article className="postcard dark yellow">
           <Image className="postcard__img" src={image_url} alt="Image Title" />
-          <div className="postcard__text">
+          <div className="postcard__text" ref={ref} style={{ width: "100%" }}>
             <h1 className="postcard__title yellow">
               <p href="#">{title}</p>
             </h1>
