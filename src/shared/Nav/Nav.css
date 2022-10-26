@@ -42,6 +42,11 @@ li {
   align-items: center;
 }
 
+.logo-png {
+  width: 40px;
+  margin-right: 20px;
+}
+
 .social-media {
   grid-column: 4/5;
 }

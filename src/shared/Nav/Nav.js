@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import "./Nav.css";
-
+import Logo from "../../assets/logo1.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Toggle from "react-toggle";
-
+import { AiOutlineDingding } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -57,7 +57,11 @@ const Nav = () => {
     <div>
       <nav className="main-nav">
         {/* 1st logo part  */}
-        <div className="logo">
+
+        <div className="logo d-flex">
+          <span>
+            <img className="logo-png" src={Logo} alt="name" />
+          </span>
           <h2>
             <span>E</span>-<span>L</span>earning
           </h2>
