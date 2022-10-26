@@ -7,6 +7,11 @@
   width: 100%;
   color: black;
   position: fixed;
+  width: 100%;
+}
+
+.left {
+  width: 100%;
 }
 .left ul {
   border: 0.1px solid gray;
@@ -15,7 +20,7 @@
 }
 .left ul li a {
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1rem;
   color: black;
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EPhoto from "../../assets/e-learn.png";
+import "./Home.css";
 const Home = () => {
   return (
     <>
@@ -51,7 +52,7 @@ const Home = () => {
             <div className="steps__content-width">
               <span>01</span>
               <h1 className="h2 mb-4">Learning Paths</h1>
-              <p className="mb-4">
+              <p className="mb-4 home-p">
                 Whether you're a beginner just starting out or an experienced
                 developer looking for courses to enhance your skills and reach
                 higher levels of software engineering, these learning paths will
@@ -59,7 +60,7 @@ const Home = () => {
               </p>
               <Link
                 href="#"
-                className="mt-2 btn btn-lg btn-outline-dark"
+                className="mt-2 btn btn-lg btn-outline-dark home-btn"
                 role="button"
               >
                 Read More <i className="bi bi-arrow-right"></i>
