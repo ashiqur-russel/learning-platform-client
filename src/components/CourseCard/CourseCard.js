@@ -24,7 +24,6 @@ const CourseCard = ({ course }) => {
           </Link>{" "}
         </div>
       </div>
-      <div className="footer"></div>
     </div>
   );
 };

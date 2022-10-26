@@ -3,7 +3,7 @@ import "./Faqs.css";
 const Faqs = () => {
   return (
     <>
-      <div className="container h-full w-100">
+      <div className="container h-full w-100 mb-4">
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <div className="faq-title text-center pb-3">
