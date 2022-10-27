@@ -10,8 +10,13 @@ import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile, verifyUserEmail, providerLogin } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    updateUserProfile,
+    verifyUserEmail,
+    providerLogin,
+    logOut,
+  } = useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
@@ -38,8 +43,11 @@ const Register = () => {
         console.log(user);
         setError("");
         form.reset();
+
         handleUpdateUserProfile(name, photoURL);
         handleEmailVerification();
+        logOut();
+        console.log(user);
         toast.success("Please verify your email address.");
       })
       .catch((e) => {

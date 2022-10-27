@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Nav = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const navigate = useNavigate();
 

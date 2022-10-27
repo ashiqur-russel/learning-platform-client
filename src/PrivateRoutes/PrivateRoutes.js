@@ -16,6 +16,7 @@ const PrivateRoutes = ({ children }) => {
 2. 
 3. Redirect user to the route they wanted to go before login
 */
+
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
