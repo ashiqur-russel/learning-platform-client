@@ -98,7 +98,7 @@ const Nav = () => {
             {user && user?.uid ? (
               <>
                 <li variant="light" onClick={handleLogOut}>
-                  Log out
+                  <button className="btn btn-danger"> LOGOUT</button>
                 </li>
               </>
             ) : (
@@ -116,7 +116,7 @@ const Nav = () => {
         <div className="social-media">
           <ul className="social-media-desktop">
             <li>
-              {user?.uid ? (
+              {user?.uid || user?.photoURL ? (
                 <img
                   src={user?.photoURL}
                   className="rounded-circle"
@@ -128,6 +128,7 @@ const Nav = () => {
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
                   className="rounded-circle"
+                  title={user?.displayName}
                   style={{ width: "50px" }}
                   alt="Avatar"
                 />

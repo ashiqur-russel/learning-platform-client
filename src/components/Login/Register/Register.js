@@ -23,7 +23,7 @@ const Register = () => {
 
   const navigate = useNavigate();
   let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || "/courses";
 
   //Form Data submit for Registration
   const handleSubmit = (event) => {
@@ -45,10 +45,10 @@ const Register = () => {
         form.reset();
 
         handleUpdateUserProfile(name, photoURL);
-        handleEmailVerification();
         logOut();
+        toast.success("Sign up Successfully! You can login Now!");
+        navigate("/login");
         console.log(user);
-        toast.success("Please verify your email address.");
       })
       .catch((e) => {
         setError(e);
@@ -62,7 +62,7 @@ const Register = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        if (user.emailVerified) {
+        if (user.uid) {
           navigate(from, { replace: true });
           toast.success("Logged in Successfully!");
         }
