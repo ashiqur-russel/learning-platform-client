@@ -16,7 +16,8 @@ https://e-leherer.web.app/
 - On the Navigation there are different Menu Eg:- Blog,Course,FaQ, Toggling dark or Light theme.
 - There are three Sign in option.Email & Password based also Google and Github Signin process.
 - There are private route also in this project.
-- From Course route if user want to redirect to Special Acceess to private route user must have a valid registered email id.
+- From Course route if user want to redirect to Special Acceess to private route user must need a valid registered email id.
+- For user interest in this project there is two different theme ( Light and dark )
 
 ### ⚡️ Technology used
 

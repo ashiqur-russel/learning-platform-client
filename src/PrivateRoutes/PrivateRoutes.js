@@ -11,14 +11,15 @@ const PrivateRoutes = ({ children }) => {
     return <Spinner animation="border" variant="primary"></Spinner>;
   }
 
-  /* If user has logged in then it will check
-   * It has uid then it will allow to go to private route defined
-   */
-  if (user && user.uid) {
-    return children;
-  } else {
+  /* 
+1. only allow authenticated user to visit the route
+2. 
+3. Redirect user to the route they wanted to go before login
+*/
+  if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
+  return children;
 };
 
 export default PrivateRoutes;

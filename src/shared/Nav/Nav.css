@@ -170,7 +170,10 @@ body.dark .menu-link ul li a {
     height: 7rem;
     grid-template-columns: 2rem 2fr 3fr 2rem 2rem;
   }
-
+  body.dark .mobile-menu-link {
+    background-color: #000000;
+    opacity: 0.9;
+  }
   .menu-link {
     display: none;
   }
