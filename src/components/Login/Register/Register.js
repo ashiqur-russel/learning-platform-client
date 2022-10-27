@@ -134,14 +134,11 @@ const Register = () => {
               placeholder="Email"
               required
             />
-
             <input
-              type="text"
-              id="password"
+              type="password"
               className="fadeIn third"
-              name="login"
+              name="password"
               placeholder="password"
-              required
             />
             <input type="submit" className="fadeIn fourth" value="Log In" />
 

@@ -24,13 +24,9 @@ const Login = () => {
         console.log(user);
         form.reset();
         setError("");
-        if (user.emailVerified) {
+        if (user.uid) {
           navigate(from, { replace: true });
           toast.success("Logged in Successfully!");
-        } else {
-          toast.error(
-            "Your email is not verified. Please verify your email address."
-          );
         }
       })
       .catch((error) => {

@@ -97,7 +97,6 @@ const Nav = () => {
             </li>
             {user && user?.uid ? (
               <>
-                <span>{user && user?.emailVerified}</span>
                 <li variant="light" onClick={handleLogOut}>
                   Log out
                 </li>

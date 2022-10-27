@@ -1,10 +1,20 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 import "./Cart";
 const Cart = () => {
   const course = useLoaderData();
 
+  const { user } = useContext(AuthContext);
   const { details, title, image_url } = course;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user]);
   return (
     <section className="h-100 h-custom">
       <div className="container py-5 h-100">
